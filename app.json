@@ -1,7 +1,7 @@
 {
   "id": "7408e345-31a4-4c46-a89b-739376acc28b",
-  "name": "SD_Seminar",
-  "publisher": "Default publisher",
+  "name": "SD Seminar module",
+  "publisher": "NAV Class",
   "brief": "",
   "description": "",
   "version": "1.0.0.0",
@@ -16,8 +16,10 @@
   "screenshots": [],
   "platform": "11.0.0.0",
   "application": "11.0.0.0",
+  "showMyCode": true,
+  "target": "Internal",
   "idRange": {
-    "from": 50100,
-    "to": 50149
+    "from": 123456700,
+    "to": 123456799
   }
 }
