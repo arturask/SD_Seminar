@@ -1,5 +1,5 @@
 pageextension 123456701 "CSD Resource List Ext" extends "Resource List"
-//Documention - LAB 5.2
+//Documention - LAB 5.1
 {
     layout
     {
