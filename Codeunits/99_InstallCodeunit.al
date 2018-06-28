@@ -67,7 +67,7 @@ codeunit 123456799 "CSD Install Codeunit"
         Seminar."Maximum Participants" := 12;
         Seminar."Last Date Modified" := DMY2Date(15,2,2018);
         Seminar."Gen. Prod. Posting Group" := 'MISC';
-        Seminar."VAT Prod. Posting Group" := 'VAT25';
+        Seminar."VAT Prod. Posting Group" := 'VAT20';
         Seminar."Seminar Price" := 5000;
         Seminar."No. Series" := 'SEM';
         if Seminar.Insert(true) then;
@@ -88,7 +88,7 @@ codeunit 123456799 "CSD Install Codeunit"
             Resource."CSD Quantity Per Day" := 8;
             Resource."CSD Maximum Participants" := 12;
             Resource."Gen. Prod. Posting Group" := 'MISC';
-            Resource."VAT Prod. Posting Group" := 'VAT25';
+            Resource."VAT Prod. Posting Group" := 'VAT20';
             if Resource.Insert(true) then;
         end;
 

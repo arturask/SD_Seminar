@@ -11,6 +11,7 @@ page 123456701 "CSD Seminar Card"
             {
                 field("No.";"No.")
                 {
+                    AssistEdit = true;
                     trigger OnAssistEdit();
                     begin
                         if AssistEdit then
