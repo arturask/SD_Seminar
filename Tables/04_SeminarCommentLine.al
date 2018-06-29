@@ -1,4 +1,5 @@
 table 123456704 "CSD Seminar Comment Line"
+//changed TableRelation on "No." to include Posted headers
 {
     DataClassification = ToBeClassified;
     Caption = 'Seminar Comment Line';
@@ -21,7 +22,8 @@ table 123456704 "CSD Seminar Comment Line"
         {
             Caption = 'No.';
             TableRelation = if ("Table Name" = const(Seminar)) "CSD Seminar"
-                            else if ("Table Name" = const("Seminar Registration Header")) "CSD Seminar Reg. Header";
+                            else if ("Table Name" = const("Seminar Registration Header")) "CSD Seminar Reg. Header"
+                            else if ("Table Name" = const("Posted Seminar Reg. Header")) "CSD Posted Sem. Reg. Header";
         }
         field(40;"Line No.";Integer)
         {
