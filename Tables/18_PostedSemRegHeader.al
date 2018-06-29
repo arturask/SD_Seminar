@@ -2,12 +2,18 @@ table 123456718 "CSD Posted Sem. Reg. Header"
 // some extra documentation
 //huh, so some people put it after the begining
 //IMO it should be before everything, except declaration of what the object is
+
+//added lookup/drilldown
+
+//added new key to optimize search for Navigate
 {
     // CSD1.00 - 2018-01-01 - D. E. Veloper
     //   Chapter 6 - Lab 1-3 & Lab 1-4
     //     - Created new table
 
     Caption = 'Posted Seminar Registration Header';
+    LookupPageId = "CSD Posted Seminar Reg. List";
+    DrillDownPageId = "CSD Posted Seminar Reg. List";
     fields
     {
         field(1;"No.";Code[20])
@@ -169,6 +175,9 @@ table 123456718 "CSD Posted Sem. Reg. Header"
         key(Key2;"Room Resource No.")
         {
             SumIndexFields = Duration;
+        }
+        key(Key3;"Posting Date")
+        {
         }
     }
 }

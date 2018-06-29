@@ -342,6 +342,9 @@ table 123456710 "CSD Seminar Reg. Header"
     trigger OnInsert();
     begin
         InitRecord();
+        if GetFilter("Seminar No.") <> '' then
+            if GetRangeMin("Seminar No.") = GetRangeMax("Seminar No.") then
+                Validate("Seminar No.", GetRangeMax("Seminar No."));
     end;
 
     procedure AssistEdit(OldSeminarRegHeader : Record "CSD Seminar Reg. Header") : Boolean;

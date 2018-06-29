@@ -1,4 +1,5 @@
 page 123456734  "CSD Posted Seminar Reg."
+//added action navigate
 {
     // CSD1.00 - 2018-01-01 - D. E. Veloper
     //   Chapter 7 - Lab 3
@@ -138,6 +139,23 @@ page 123456734  "CSD Posted Seminar Reg."
                     RunObject = Page 123456739;
                     RunPageLink = "Document No."=Field("No.");
                 }
+            }
+        }
+        area(Processing)
+        {
+            action("&Navigate")
+            {
+                Caption = '&Navigate';
+                Image = Navigate;
+                Promoted = true;
+                PromotedCategory = Process;
+                trigger OnAction();
+                var
+                    Navigate : Page Navigate;
+                begin
+                    Navigate.SetDoc("Posting Date", "No.");
+                    Navigate.Run;
+                end;
             }
         }
     }

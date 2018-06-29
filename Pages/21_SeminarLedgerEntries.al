@@ -1,6 +1,8 @@
 page 123456721 "CSD Seminar Ledger Entries"
 //Created new page for displaying Seminar Ledger Entries
 //Seriously, how much more of these will we need to do?!
+
+//added navigate action
 {
     PageType = List;
     SourceTable = "CSD Seminar Ledger Entry";
@@ -51,12 +53,20 @@ page 123456721 "CSD Seminar Ledger Entries"
 
     actions
     {
-        area(processing)
+        area(Processing)
         {
-            action(ActionName)
+            action("&Navigate")
             {
+                Caption = '&Navigate';
+                Image = Navigate;
+                Promoted = true;
+                PromotedCategory = Process;
                 trigger OnAction();
+                var
+                    Navigate : Page Navigate;
                 begin
+                    Navigate.SetDoc("Posting Date", "Document No.");
+                    Navigate.Run;
                 end;
             }
         }
