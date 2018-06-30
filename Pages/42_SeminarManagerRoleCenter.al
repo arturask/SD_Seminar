@@ -61,7 +61,7 @@ page 123456742 "CSD Seminar Manager RoleCenter"
             }
             action(Rooms)
             {
-                Caption = 'Instructors';
+                Caption = 'Rooms';
                 RunObject = Page "Resource List";
                 RunPageView = WHERE(Type = const(Machine));
                 ToolTip = 'View all resources registeres as machines';

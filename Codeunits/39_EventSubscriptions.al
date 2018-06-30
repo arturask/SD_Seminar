@@ -27,34 +27,43 @@ codeunit 123456739 "CSD Event Subscriptions"
             PostedSeminarRegHeader.setfilter("No.", DocNoFilter);
             PostedSeminarRegHeader.SetFilter("Posting Date", PostingDateFilter);
             DocNoOfRecords := PostedSeminarRegHeader.Count;
-            if DocNoOfRecords <> 0 then 
-                with DocumentEntry do begin
-                    Init;
-                    NextEntryNo += 1;
-                    "Entry No." := NextEntryNo;
-                    "Table ID" := Database::"CSD Posted Sem. Reg. Header";
-                    "Document Type" := 0;
-                    "Table Name" := PostedSeminarRegHeader.TableName;
-                    "No. of Records" := DocNoOfRecords;
-                    Insert(true);
-                end;
+            
+            with DocumentEntry do begin
+                if DocNoOfRecords = 0 then
+                    exit;
+                if FindLast then
+                    NextEntryNo := "Entry No." + 1
+                else
+                    NextEntryNo := 1;
+                Init;
+                "Entry No." := NextEntryNo;
+                "Table ID" := Database::"CSD Posted Sem. Reg. Header";
+                "Document Type" := 0;
+                "Table Name" := PostedSeminarRegHeader.TableName;
+                "No. of Records" := DocNoOfRecords;
+                Insert(true);
+            end;
         end;
         if SeminarLedgerEntry.ReadPermission then begin
             SeminarLedgerEntry.Reset;
             SeminarLedgerEntry.setfilter("Document No.", DocNoFilter);
             SeminarLedgerEntry.SetFilter("Posting Date", PostingDateFilter);
             DocNoOfRecords := SeminarLedgerEntry.Count;
-            if DocNoOfRecords <> 0 then 
-                with DocumentEntry do begin
-                    Init;
-                    NextEntryNo += 1;
-                    "Entry No." := NextEntryNo;
-                    "Table ID" := Database::"CSD Seminar Ledger Entry";
-                    "Document Type" := 0;
-                    "Table Name" := SeminarLedgerEntry.TableName;
-                    "No. of Records" := DocNoOfRecords;
-                    Insert(true);
-                end;
+            with DocumentEntry do begin
+                if DocNoOfRecords = 0 then
+                    exit;
+                if FindLast then
+                    NextEntryNo := "Entry No." + 1
+                else
+                    NextEntryNo := 1;
+                Init;
+                "Entry No." := NextEntryNo;
+                "Table ID" := Database::"CSD Seminar Ledger Entry";
+                "Document Type" := 0;
+                "Table Name" := SeminarLedgerEntry.TableName;
+                "No. of Records" := DocNoOfRecords;
+                Insert(true);
+            end;
         end;
 
     end;
@@ -67,9 +76,19 @@ codeunit 123456739 "CSD Event Subscriptions"
     begin
         case TableID of
             Database::"CSD Posted Sem. Reg. Header":
-                Page.Run(0,PostedSeminarRegHeader);
+                begin
+                    PostedSeminarRegHeader.Reset;
+                    PostedSeminarRegHeader.setfilter("No.", DocNoFilter);
+                    PostedSeminarRegHeader.SetFilter("Posting Date", PostingDateFilter);
+                    Page.Run(0,PostedSeminarRegHeader);
+                end;
             Database::"CSD Seminar Ledger Entry":
-                Page.Run(0,SeminarLedgerEntry);
+                begin
+                    SeminarLedgerEntry.Reset;
+                    SeminarLedgerEntry.setfilter("Document No.", DocNoFilter);
+                    SeminarLedgerEntry.SetFilter("Posting Date", PostingDateFilter);
+                    Page.Run(0,SeminarLedgerEntry);
+                end;
         end;
     end;
 }
