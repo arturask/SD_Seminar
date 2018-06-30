@@ -24,8 +24,8 @@ codeunit 123456732 "CSD Seminar Jnl.-Post Line"
                 SeminarLedgerEntry.LockTable;
                 if SeminarLedgerEntry.FindLast then
                     CurrEntryNo := SeminarLedgerEntry."Entry No." ;
-                CurrEntryNo += 1;
             end;
+            CurrEntryNo += 1;
             if "Document Date" = 0D then
                 "Document Date" := "Posting Date";
             if SeminarRegister."No." = 0 then begin
@@ -46,6 +46,7 @@ codeunit 123456732 "CSD Seminar Jnl.-Post Line"
             SeminarRegister.Modify(true);
 
             SeminarLedgerEntry.Init;
+            SeminarLedgerEntry."Entry No." := CurrEntryNo;
             SeminarLedgerEntry."Seminar No." := "Seminar No.";
             SeminarLedgerEntry."Posting Date" := "Posting Date";
             SeminarLedgerEntry."Document Date" := "Document Date";
@@ -72,6 +73,7 @@ codeunit 123456732 "CSD Seminar Jnl.-Post Line"
             SeminarLedgerEntry."Source Code" := "Source Code";
             SeminarLedgerEntry."Reason Code" := "Reason Code";
             SeminarLedgerEntry."Posting No. Series" := "Posting No. Series";
+            SeminarLedgerEntry.Insert(true);
         end;
     end;
 

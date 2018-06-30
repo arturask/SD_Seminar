@@ -22,7 +22,7 @@ codeunit 123456700 "CSD Seminar-Post"
             TestField("Room Resource No.");
             TestField(Status,Status::Closed);
             SeminarRegLine.SetRange("Document No.", "No.");
-            if not SeminarRegLine.IsEmpty then
+            if SeminarRegLine.IsEmpty then
                 error(Text001);
             Window.Open('#1#####################\\' + Text002);
             Window.Update(1,StrSubstNo('%1 %2',Text003, "No."));
@@ -43,7 +43,7 @@ codeunit 123456700 "CSD Seminar-Post"
             PstdSeminarRegHeader."User ID" := UserId;
             PstdSeminarRegHeader.Insert(true);
             Window.Update(1,StrSubstNo(Text004,"No.",PstdSeminarRegHeader."No."));
-            CopyCommentLines(2,3,"No.",PstdSeminarRegHeader."No.");
+            CopyCommentLines(1,2,"No.",PstdSeminarRegHeader."No.");
             CopyCharges("No.",PstdSeminarRegHeader."No.");
             LineCount := 0; //why???
             if SeminarRegLine.FindSet then begin

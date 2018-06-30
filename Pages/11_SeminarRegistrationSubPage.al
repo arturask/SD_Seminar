@@ -8,6 +8,7 @@ page 123456711 "CSD Seminar Reg. Subpage"
     DelayedInsert = true;
     PageType = ListPart;
     SourceTable = "CSD Seminar Registration Line";
+    AutoSplitKey = true;
 
     layout
     {
