@@ -156,6 +156,7 @@ codeunit 123456700 "CSD Seminar-Post"
             ResJnlLine."Total Cost" := ResJnlLine."Unit Cost" * ResJnlLine.Quantity;
             ResJnlLine."CSD Seminar No." := "Seminar No.";
             ResJnlLine."CSD Seminar Registration No." := "No.";
+            ResJnlPostLine.RunWithCheck(ResJnlLine);
         end;
         ResLedgEntry.FindLast;
         exit(ResLedgEntry."Entry No.");
