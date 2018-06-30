@@ -282,6 +282,11 @@ table 123456710 "CSD Seminar Reg. Header"
         {
             Caption = 'Posting No.';
         }
+        field(40;"No. Printed";Integer)
+        {
+            Caption = 'No. Printed';
+            Editable = false;
+        }
 
     }
 
@@ -376,6 +381,13 @@ table 123456710 "CSD Seminar Reg. Header"
         "Document Date" := WORKDATE;
         SeminarSetup.GET;
         NoSeriesMgt.SetDefaultSeries("Posting No. Series",SeminarSetup."Posted Seminar Reg. Nos.");
+    end;
+
+    procedure IncrementNoPrinted();
+    begin
+        "No. Printed" += 1;
+        Modify(true);
+        Commit
     end;
 }
 
